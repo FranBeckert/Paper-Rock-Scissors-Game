@@ -76,9 +76,9 @@ function game() {
     }
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
-    if (result == "You Win!") {
+    if (result.includes("You Win!")) {
       playerScore++;
-    } else if (result == "You Lose!") {
+    } else if (result.includes("You Lose!")) {
       computerScore++;
     }
     console.log(result);
