@@ -26,11 +26,11 @@ function askForAudio() {
 
 // Function to generate a random option for the computer
 const options = ["rock", "paper", "scissors"];
-const computerPlay = () => {
+function computerPlay() {
   const randomIndex = Math.floor(Math.random() * options.length);
   console.log(options[randomIndex]);
   return options[randomIndex];
-};
+}
 
 function capitalFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -62,13 +62,16 @@ function game() {
   if (!isDevToolsOpen()) {
     alert("Please open console tab in dev tools to play the game");
   }
+  alert(
+    "Welcome to Rock, Paper, Scissors!\nDefeat the Evil AI by winning at least 3 out of 5 rounds.\nGood luck!"
+  );
 
   let playerScore = 0;
   let computerScore = 0;
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt(
-      "Press cancel to forfet the game\nEnter your choice: "
+      "Press cancel to forfet the game\nEnter your choice: Rock, Paper or Scissors"
     );
     if (playerSelection === null) {
       console.log("you have forfeted the game");
@@ -84,9 +87,9 @@ function game() {
     console.log(result);
   }
   if (playerScore > computerScore) {
-    console.log("You win the game!");
+    console.log("You won the game!");
   } else if (playerScore < computerScore) {
-    console.log("You lose the game!");
+    console.log("You lost the game!");
   } else {
     console.log("It's a tie!");
   }
