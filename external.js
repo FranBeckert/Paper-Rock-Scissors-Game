@@ -4,6 +4,26 @@ function isDevToolsOpen() {
   const heightThreshold = window.outerHeight - window.innerHeight > threshold;
   return widthThreshold || heightThreshold;
 }
+// audio
+const audio = new Audio("audio/audio.mp3");
+audio.loop = true;
+
+function pauseAudio() {
+  audio.pause();
+}
+
+function toggleAudio() {
+  audio.paused ? audio.play() : audio.pause();
+}
+
+function askForAudio() {
+  if (confirm("Do you want a background Audio?")) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+
 // Function to generate a random option for the computer
 const options = ["rock", "paper", "scissors"];
 const computerPlay = () => {
@@ -45,9 +65,11 @@ function game() {
 
   let playerScore = 0;
   let computerScore = 0;
-  
+
   for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Press cancel to forfet the game\nEnter your choice: ");
+    const playerSelection = prompt(
+      "Press cancel to forfet the game\nEnter your choice: "
+    );
     if (playerSelection === null) {
       console.log("you have forfeted the game");
       return;
