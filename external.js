@@ -1,3 +1,9 @@
+function isDevToolsOpen() {
+  const threshold = 160;
+  const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+  const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+  return widthThreshold || heightThreshold;
+}
 // Function to generate a random option for the computer
 const options = ["rock", "paper", "scissors"];
 const computerPlay = () => {
@@ -32,6 +38,35 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  if (!isDevToolsOpen()) {
+    alert("Please open console tab in dev tools to play the game");
+  }
+
+  let playerScore = 0;
+  let computerScore = 0;
+  
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt("Press cancel to forfet the game\nEnter your choice: ");
+    if (playerSelection === null) {
+      console.log("you have forfeted the game");
+      return;
+    }
+    const computerSelection = computerPlay();
+    const result = playRound(playerSelection, computerSelection);
+    if (result == "You Win!") {
+      playerScore++;
+    } else if (result == "You Lose!") {
+      computerScore++;
+    }
+    console.log(result);
+  }
+  if (playerScore > computerScore) {
+    console.log("You win the game!");
+  } else if (playerScore < computerScore) {
+    console.log("You lose the game!");
+  } else {
+    console.log("It's a tie!");
+  }
+}
+game();
