@@ -4,31 +4,12 @@ function isDevToolsOpen() {
   const heightThreshold = window.outerHeight - window.innerHeight > threshold;
   return widthThreshold || heightThreshold;
 }
-// audio
-const audio = new Audio("audio/audio.mp3");
-audio.loop = true;
-
-function pauseAudio() {
-  audio.pause();
-}
-
-function toggleAudio() {
-  audio.paused ? audio.play() : audio.pause();
-}
-
-function askForAudio() {
-  if (confirm("Do you want a background Audio?")) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
 
 // Function to generate a random option for the computer
 const options = ["rock", "paper", "scissors"];
 function computerPlay() {
   const randomIndex = Math.floor(Math.random() * options.length);
-  console.log(options[randomIndex]);
+
   return options[randomIndex];
 }
 
@@ -71,10 +52,10 @@ function game() {
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt(
-      "Press cancel to forfet the game\nEnter your choice: Rock, Paper or Scissors"
+      "Press cancel to give up the game\nEnter your choice: Rock, Paper or Scissors"
     );
     if (playerSelection === null) {
-      console.log("you have forfeted the game");
+      console.log("you have given up the game");
       return;
     }
     const computerSelection = computerPlay();
@@ -85,6 +66,9 @@ function game() {
       computerScore++;
     }
     console.log(result);
+    console.log(
+      `Player Score: ${playerScore} Computer Score: ${computerScore}`
+    );
   }
   if (playerScore > computerScore) {
     console.log("You won the game!");
