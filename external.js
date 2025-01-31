@@ -6,26 +6,32 @@ const computerPlay = () => {
   return options[randomIndex];
 };
 
+function capitalFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 
 function playRound(playerSelection, computerSelection) {
-
-  playerSelection = playerSelection.toLowerCase();
-  if(!options.includes(playerSelection)) {
-    return "error"
+  playerSelection = playerSelection.toLowerCase().trim();
+  if (!options.includes(playerSelection)) {
+    return "Error. Please select Rock, Paper or Scissors";
   }
   if (playerSelection == computerSelection) {
-      return "It's a tie!";
+    return "It's a tie!";
   } else if (
-    (playerSelection == "scissors" && computerSelection == "paper") ||
-    (playerSelection == "paper" && computerSelection == "rock")||
-    (playerSelection == "rock" && computerSelection == "scissors") 
+    (playerSelection === "scissors" && computerSelection == "paper") ||
+    (playerSelection === "paper" && computerSelection == "rock") ||
+    (playerSelection === "rock" && computerSelection == "scissors")
   ) {
-      return "You Win!";
+    return `You Win! ${capitalFirstLetter(
+      playerSelection
+    )}  beats  ${capitalFirstLetter(computerSelection)}`;
   } else {
-      return "You Lose!";
+    return `You Lose! ${capitalFirstLetter(
+      computerSelection
+    )}  beats ${capitalFirstLetter(playerSelection)}`;
   }
 }
 
-const playerSelection = 'rock' ; 
-const computerSelection = computerPlay() ; 
-console.log(playRound(playerSelection ,computerSelection)) ; 
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
