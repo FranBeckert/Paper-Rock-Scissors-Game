@@ -78,5 +78,12 @@ function game() {
   } else {
     console.log("It's a tie!");
   }
+
+  const playAgain = confirm("Do you want to play again?");
+  if (playAgain) {
+    game();
+  } else {
+    console.log("Thanks for playing! Have a great day!");
+  }
 }
 game();
