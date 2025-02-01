@@ -49,22 +49,20 @@ function userPlay() {
 
 }
 
-function testingTerminal() {
-  if (!isDevToolsOpen()) {
-    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Close this alert and refresh the page");
-    return;
-  }
-  alert(
-    "Welcome to Rock, Paper, Scissors!\nDefeat the Evil AI by winning at least 3 out of 5 rounds.\nGood luck!"
-  );
-}
 
 
 function game() {
   let playerScore = 0;
   let computerScore = 0;
   
-  testingTerminal() ; 
+  if (!isDevToolsOpen()) {
+    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Close this alert and the page will refresh");
+    location.reload();
+    return;
+  }
+  alert(
+    "Welcome to Rock, Paper, Scissors!\nDefeat the Evil AI by winning at least 3 out of 5 rounds.\nGood luck!"
+  );
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = userPlay();
