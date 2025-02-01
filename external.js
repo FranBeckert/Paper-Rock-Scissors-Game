@@ -17,10 +17,6 @@ function capitalFirstLetter(string) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase().trim();
-  if (!options.includes(playerSelection)) {
-    return "Error. Please select Rock, Paper or Scissors";
-  }
   if (playerSelection == computerSelection) {
     return "It's a tie!";
   } else if (
@@ -37,10 +33,25 @@ function playRound(playerSelection, computerSelection) {
     )}  beats ${capitalFirstLetter(playerSelection)}`;
   }
 }
+function userPlay() {
+  let playerSelection = prompt(
+    "Enter your choice: Rock, Paper or Scissors"
+  );
+  if (playerSelection === null) {
+    return null;
+  }
+  playerSelection = playerSelection.toLowerCase().trim();
+  if (!options.includes(playerSelection)) {
+    alert("Error. Please select Rock, Paper or Scissors")
+    return userPlay();
+  }
+  return playerSelection;
 
+}
 function game() {
   if (!isDevToolsOpen()) {
-    alert("Please open console tab in dev tools to play the game");
+    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Close this alert and refresh the page");
+    return;
   }
   alert(
     "Welcome to Rock, Paper, Scissors!\nDefeat the Evil AI by winning at least 3 out of 5 rounds.\nGood luck!"
@@ -50,12 +61,10 @@ function game() {
   let computerScore = 0;
 
   for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt(
-      "Press cancel to give up the game\nEnter your choice: Rock, Paper or Scissors"
-    );
+    const playerSelection = userPlay();
     if (playerSelection === null) {
-      console.log("you have given up the game");
-      return;
+      console.log("You have exited the game!");
+      break;
     }
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
@@ -72,8 +81,6 @@ function game() {
   if (playerScore > computerScore) {
     console.log("You won the game!");
   } else if (playerScore < computerScore) {
-    console.log("You lost the game!");
-  } else if (playerScore === 0) {
     console.log("You lost the game!");
   } else {
     console.log("It's a tie!");
