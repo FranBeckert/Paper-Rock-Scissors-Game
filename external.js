@@ -56,7 +56,7 @@ function game() {
   let computerScore = 0;
   
   if (!isDevToolsOpen()) {
-    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Close this alert and the page will refresh");
+    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Ensure console is attached to the browser. Close this alert and the page will refresh");
     location.reload();
     return;
   }
