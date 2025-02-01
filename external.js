@@ -61,8 +61,7 @@ function game() {
     return;
   }
   alert(
-    "Welcome to Rock, Paper, Scissors!\nDefeat the Evil AI by winning at least 3 out of 5 rounds.\nGood luck!"
-  );
+    "Welcome to RockHow to Play Rock, Paper, Scissors👆 Choose Your Move!\n Rock 🪨 \nPaper 📜 \nScissors ✂️ \n 🤝 The Battle Begins! \n You and your opponent will reveal your choices. \n 🥇 Who Wins? \nGood luck!"
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = userPlay();
