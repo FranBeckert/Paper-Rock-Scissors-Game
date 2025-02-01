@@ -60,6 +60,7 @@ function game() {
   }
   alert(
     "Welcome to RockHow to Play Rock, Paper, Scissors👆 Choose Your Move!\n Rock 🪨 \nPaper 📜 \nScissors ✂️ \n 🤝 The Battle Begins! \n You and your opponent will reveal your choices. \n 🥇 Who Wins? \nGood luck!"
+  );
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = userPlay();
