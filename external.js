@@ -5,11 +5,10 @@ function isDevToolsOpen() {
   return widthThreshold || heightThreshold;
 }
 
-// Function to generate a random option for the computer
 const options = ["rock", "paper", "scissors"];
+
 function computerPlay() {
   const randomIndex = Math.floor(Math.random() * options.length);
-
   return options[randomIndex];
 }
 
