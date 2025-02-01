@@ -34,29 +34,27 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 function userPlay() {
-  let playerSelection = prompt(
-    "Enter your choice: Rock, Paper or Scissors"
-  );
+  let playerSelection = prompt("Enter your choice: Rock, Paper or Scissors");
   if (playerSelection === null) {
     return null;
   }
   playerSelection = playerSelection.toLowerCase().trim();
   if (!options.includes(playerSelection)) {
-    alert("Error. Please select Rock, Paper or Scissors")
+    alert("Error. Please select Rock, Paper or Scissors");
     return userPlay();
   }
   return playerSelection;
-
 }
-
-
 
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  
+  let round = 0;
+
   if (!isDevToolsOpen()) {
-    alert("Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Ensure console is attached to the browser. Close this alert and the page will refresh");
+    alert(
+      "Please open console tab in dev tools to play the game, you can open the dev tools by pressing (Ctrl + Shift + i) or right click on the page and select inspect element then click on console tab. Ensure console is attached to the browser. Close this alert and the page will refresh"
+    );
     location.reload();
     return;
   }
@@ -76,6 +74,8 @@ function game() {
     } else if (result.includes("You Lose!")) {
       computerScore++;
     }
+    round++;
+    console.log(`Round ${round}`);
     console.log(result);
     console.log(
       `Player Score: ${playerScore} Computer Score: ${computerScore}`
